@@ -32,38 +32,44 @@ def calculate_acceleration_x(v, k, mass):
 def flying_mass(initial_vx, initial_vy, mass, k=0.035):
     #Models a flying mass from a set co-ordinate
     
-    #Initialising values for x and y (the velocity is given to us above)
-    gravity = -9.81 # m/s2
+    #Initialising values for x and y (the initial velocity is given to us above)
+    gravity = -9.81
+    #distance for x and y
     x = 0
     y = 0
+    #velocity of x and y
     vy = initial_vy
     vx = initial_vx
+    #initial time and time step thats being used
     t = 0.0
     dt = 0.1
 
-    # Create empty lists which we will update
+    #Empty lists which are being updated through the code
     y_coord = []
     x_coord = []
     x_velocity = []
     y_velocity = []
     time = []
 
-    # Keep looping while the object is still falling
+    #Keep looping until y hits the floor (system is not set up for further)
     while y_coord[-1] > 0:
-        # Evaluate the state of the system - start by calculating the total force on the object
+        
+        #Set up of acceleration with initial numbers
         y_accel = calculate_acceleration_y(vy, k, mass, gravity)
         x_accel = calculate_acceleration_x(vx, k, mass)
 
-        # Append values to list and then update
+        #Appending values to list and then updating
+        
+        #Distance
         x_coord.append(x)
         y_coord.append(y)
-        
+        #Velocity
         x_velocity.append(vx)
         y_velocity.append(vy)
-        
+        #Time
         time.append(t)
 
-        # Update the state for time, height and velocity
+        # Update the state for time, distance and velocity for x and y
         t, x_dist, xv = update_state(t, x, vx, x_accel, dt)
         t, y_dist, yv = update_state(t, y, vy, y_accel, dt)
     
