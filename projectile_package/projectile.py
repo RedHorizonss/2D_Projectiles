@@ -53,7 +53,7 @@ def flying_mass(initial_vx, initial_vy, mass, k=0.035):
     
     #Initializes time and time step (dt) thats being used
     t = 0.0
-    dt = 0.1
+    dt = 0.01
 
     #Empty lists which are being updated through the code used to plot the changes
     y_coord = []
