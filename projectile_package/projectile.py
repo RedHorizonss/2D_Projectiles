@@ -81,5 +81,3 @@ def flying_mass(initial_vx, initial_vy, mass, k=0.035):
         t, y, vy = update_state(t, y, vy, y_accel, dt)
     
     return time, x_coord, y_coord, x_velocity, y_velocity
-
-t, x, y, vx, vy = flying_mass(10., 10., mass=1., k=0.035)
